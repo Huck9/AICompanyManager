@@ -8,7 +8,7 @@ use Doctrine\ORM\EntityManager;
 $config = Setup::createAnnotationMetadataConfiguration(array(__DIR__ . '/src'));
 
 $conn = array(
-    'dbname' => 'lab07',
+    'dbname' => 'companymanager',
     'user' => 'root',
     'password' => '',
     'host' => 'localhost',
