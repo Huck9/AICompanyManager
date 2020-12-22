@@ -1,8 +1,11 @@
 <?php
 
+require_once("config.php");
+global $config;
+
 try {
 
-    $pdo = new PDO("mysql:host=localhost;dbname=id15055529_company", "root", "");
+    $pdo = new PDO($config['dsn'], $config['username'], $config['password']);
 
     $usersPESEL = array("90110997361", "91052945827", "75092344644", "98102854355", "90052165929", "01292042189",
         "03231975992", "89092612122", "50011086784", "63062483684");
