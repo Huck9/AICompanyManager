@@ -1,5 +1,5 @@
 <?php
-require_once("config.php");
+require_once("../config.php");
 global $config;
 if (isset($_GET['id'])) {
     if (!empty($_POST)) {

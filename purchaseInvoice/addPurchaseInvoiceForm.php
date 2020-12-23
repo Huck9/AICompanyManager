@@ -1,5 +1,5 @@
 <?php
-require_once("config.php");
+require_once("../config.php");
 template_header("Add Invoice");
 ?>
     <form method="post" action="addPurchaseInvoice.php">

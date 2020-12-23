@@ -1,5 +1,5 @@
 <?php
-require_once("config.php");
+require_once("../config.php");
 global $config;
 $pdo = new PDO($config['dsn'], $config['username'], $config['password']);
 if (isset($_GET['id'])) {
