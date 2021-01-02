@@ -80,7 +80,17 @@
     $rows = $stm->fetchALL(PDO::FETCH_ASSOC);
 
     foreach($rows as $row){
-        echo "<tr><td>" . $row['NrInwentarzowy']. "</td><td>" . $row['Nazwa']. "</td><td>" . $row['KluczSeryjny']. "</td><td>" . $row['DataZakupu']. "</td><td>" . $row['IdFaktury']. "</td><td>"  . $row['WaznoscWsparcia']. "</td><td>" . $row['WaznoscLicencji']. "</td><td>" .$row['Bezterminowo']. "</td><td>" . $row['Uzytkownik']. "</td><td>" .$row['Notatki']. "</td></tr>";
+        echo "<tr><td>" . $row['NrInwentarzowy'].
+            "</td><td>" . $row['Nazwa'].
+            "</td><td>" . $row['KluczSeryjny'].
+            "</td><td>" . $row['DataZakupu'].
+            "</td><td>" . $row['IdFaktury'].
+            "</td><td>"  . $row['WaznoscWsparcia'].
+            "</td><td>" . $row['WaznoscLicencji'].
+            "</td><td>" .$row['Bezterminowo'].
+            "</td><td>" . $row['Uzytkownik'].
+            "</td><td>" .$row['Notatki'].
+            "</td></tr>";
     }
     ?>
 </table>
