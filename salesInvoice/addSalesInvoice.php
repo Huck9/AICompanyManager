@@ -14,9 +14,8 @@ if (!empty($_POST)) {
     $bruttoValue = isset($_POST['bruttoValue']) ? $_POST['bruttoValue'] : '';
     $nettoValueOther = isset($_POST['nettoValueOther']) ? $_POST['nettoValueOther'] : '';
     $nettoOtherName = isset($_POST['nettoOtherName']) ? $_POST['nettoOtherName'] : '';
-    $stmt->execute([$invoiceNumber,$contractorName,$vatID,$nettoValue,$vatValue,$bruttoValue,$nettoValueOther,$nettoOtherName]);
-
+    $stmt->execute([$invoiceNumber, $contractorName, $vatID, $nettoValue, $vatValue, $bruttoValue, $nettoValueOther, $nettoOtherName]);
 
 
 }
-header('Location: readSalesInvoice.php');
+//header('Location: readSalesInvoice.php');

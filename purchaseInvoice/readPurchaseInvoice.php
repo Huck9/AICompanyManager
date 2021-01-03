@@ -21,7 +21,7 @@ template_header("Read Invoice");
                 <td>bruttoValue</td>
                 <td>nettoValueOther</td>
                 <td>nettoOtherName</td>
-
+                <td>filename</td>
                 <td></td>
             </tr>
         </thead>
@@ -37,6 +37,7 @@ template_header("Read Invoice");
                 <td><?=$invoice['bruttoValue']?></td>
                 <td><?=$invoice['nettoValueOther']?></td>
                 <td><?=$invoice['nettoOtherName']?></td>
+                <td><a href="../uploadFiles/uploads/<?=$invoice['filename']?>"><?=$invoice['filename']?></td>
                 <td class="actions">
                     <a href="updatePurchaseInvoiceForm.php?id=<?=$invoice['id']?>" >Edytuj</a>
                     <a href="deletePurchaseInvoice.php?id=<?=$invoice['id']?>" >Usuń</a>

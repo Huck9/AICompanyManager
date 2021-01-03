@@ -1,23 +1,21 @@
 <?php
 
-$targetfolder = "uploads/";
+function uploadFile($file){
+    $targetfolder = "../uploadFiles/uploads/";
 
-$targetfolder = $targetfolder . basename($_FILES['file']['name']);
+    $targetfolder = $targetfolder . basename($file['name']);
 
-$file_type = $_FILES['file']['type'];
+    $file_type = $file['type'];
 
-if ($file_type == "application/pdf" || $file_type == "image/gif" || $file_type == "image/jpeg") {
+    if ($file_type == "application/pdf" || $file_type == "image/gif" || $file_type == "image/jpeg") {
 
-    if (move_uploaded_file($_FILES['file']['tmp_name'], $targetfolder)) {
-
-        echo "The file " . basename($_FILES['file']['name']) . " is uploaded";
+        if (move_uploaded_file($file['tmp_name'], $targetfolder)) {
+            echo "The file " . basename($file['name']) . " is uploaded";
+        } else {
+            echo "Problem uploading file";
+        }
 
     } else {
-
-        echo "Problem uploading file";
-
+        echo "You may only upload PDFs, JPEGs or GIF files.<br>";
     }
-
-} else {
-    echo "You may only upload PDFs, JPEGs or GIF files.<br>";
 }
