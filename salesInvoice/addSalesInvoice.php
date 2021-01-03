@@ -5,7 +5,7 @@ global $config;
 if (!empty($_POST)) {
     $pdo = new PDO($config['dsn'], $config['username'], $config['password']);
 
-    $stmt = $pdo->prepare("Insert into purchaseinvoice (invoiceNumber, contractorName, vatID, nettoValue, vatValue, bruttoValue, nettoValueOther, nettoOtherName) values (?, ?, ?, ?, ?,?,?,?)");
+    $stmt = $pdo->prepare("Insert into salesinvoice (invoiceNumber, contractorName, vatID, nettoValue, vatValue, bruttoValue, nettoValueOther, nettoOtherName) values (?, ?, ?, ?, ?,?,?,?)");
     $invoiceNumber = isset($_POST['invoiceNumber']) ? $_POST['invoiceNumber'] : '';
     $contractorName = isset($_POST['contractorName']) ? $_POST['contractorName'] : '';
     $vatID = isset($_POST['vatID']) ? $_POST['vatID'] : '';
@@ -19,4 +19,4 @@ if (!empty($_POST)) {
 
 
 }
-header('Location: readPurchaseInvoice.php');
+header('Location: readSalesInvoice.php');
