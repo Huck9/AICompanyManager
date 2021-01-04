@@ -40,8 +40,8 @@ $licences = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <td><?=$licence['Uzytkownik']?></td>
                 <td><?=$licence['Notatki']?></td>
                 <td class="actions">
-                    <a href="updateLicencesForm.php?NrInwentarzowy=<?php echo $licence['NrInwentarzowy']; ?>" >Edytuj</a>
-                    <a href="deleteLicence.php?NrInwentarzowy=<?php echo $licence['NrInwentarzowy']; ?>" >Usuń</a>
+                    <a href="updateLicencesForm.php?NrInwentarzowy=<?php echo $licence['NrInwentarzowy']; ?>" class="edit">Edytuj</a>
+                    <a href="deleteLicence.php?NrInwentarzowy=<?php echo $licence['NrInwentarzowy']; ?>" class="delete">Usuń</a>
                 </td>
             </tr>
         <?php endforeach; ?>
