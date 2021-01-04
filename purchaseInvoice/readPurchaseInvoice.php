@@ -8,7 +8,7 @@ $invoices = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 template_header("Read Invoice");
 ?>
-    <button><a href="addPurchaseInvoiceForm.php">Dodaj fakturę</a></button>
+    <button><a href="addPurchaseInvoiceForm.php" class="add">Dodaj fakturę</a></button>
     <p></p>
     <table>
         <thead>

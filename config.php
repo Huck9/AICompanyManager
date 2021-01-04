@@ -45,7 +45,7 @@ function template_header($title) {
             </a>
         </li>
         <li>
-            <a href=".//Licences/readLicence.php">
+            <a href="../Licences/readLicence.php">
                 <i class="fa fa-info-circle" aria-hidden="true"></i> Licencje
             </a>
         </li>

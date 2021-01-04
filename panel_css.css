@@ -82,3 +82,21 @@
 .content-container {
     padding-left: 220px;
 }
+
+a:link {
+    background-color: transparent;
+    text-decoration: none;
+}
+
+a:visited {
+    background-color: transparent;
+    text-decoration: none;
+}
+
+a:hover {
+    background-color: transparent;
+}
+
+a:active {
+    background-color: transparent;
+}
