@@ -36,17 +36,23 @@ function template_header($title) {
         <li class="header">Inne</li>
         <li>
             <a href="#">
-                <i class="fa fa-users" aria-hidden="true"></i> Dokumenty
+                <i class="fa fa-tachometer" aria-hidden="true"></i> Dokumenty
             </a>
         </li>
         <li>
             <a href="#">
-                <i class="fa fa-cog" aria-hidden="true"></i> Sprzęt
+                <i class="fa fa-tachometer" aria-hidden="true"></i> Sprzęt
             </a>
         </li>
         <li>
             <a href="../Licences/readLicence.php">
-                <i class="fa fa-info-circle" aria-hidden="true"></i> Licencje
+                <i class="fa fa-tachometer" aria-hidden="true"></i> Licencje
+            </a>
+        </li>
+        <li class="header">Konto</li>
+        <li>
+            <a href="../index.php">
+                <i class="fa fa-tachometer" aria-hidden="true"></i> Wyloguj
             </a>
         </li>
     </ul>
