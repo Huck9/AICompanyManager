@@ -1,5 +1,5 @@
 <?php
 $config = [];
-$config['dsn'] = 'mysql:dbname=id15055529_company; host=localhost';
+$config['dsn'] = 'mysql:dbname=id15055529_company; host=127.0.0.1';
 $config['username'] = 'root';
 $config['password'] = '';
