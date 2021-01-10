@@ -30,8 +30,10 @@
 <div id="documents">
 <table>
     <tr id="nazwykolumn">
+        <th>Id Dokumentu</th>
         <th>Data Dokumentu</th>
         <th>Notatki</th>
+        <th>Nazwa Pliku</th>
     </tr>
     <?php
     $dsn = "mysql:host=localhost;dbname=id15055529_company";
@@ -42,7 +44,7 @@
     $rows = $stm->fetchALL(PDO::FETCH_ASSOC);
 
     foreach($rows as $row){
-        echo "<tr><td>" . $row['documentDate']. "</td><td>" . $row['notes']. "</td></tr>";
+        echo "<tr><td>" . $row['IdDocument']. "</td><td>" . $row['documentDate']. "</td><td>" . $row['notes']. "</td><td>" . $row['filename']. "</td></tr>";
     }
     ?>
 </table>
