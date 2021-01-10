@@ -2,10 +2,12 @@
 require_once("../config.php");
 global $config;
 $pdo = new PDO($config['dsn'], $config['username'], $config['password']);
+template_header("Read Invoice");
 if (isset($_GET['id'])) {
     $stmt = $pdo->prepare('SELECT * FROM purchaseinvoice WHERE id = ?');
     $stmt->execute([$_GET['id']]);
     $invoice = $stmt->fetch(PDO::FETCH_ASSOC);
+
 ?>
     <form method="post" action="updatePurchaseInvoice.php?id=<?=$_GET['id']?>">
         Numer Faktury:<input type="text" name="invoiceNumber" value="<?=$invoice['invoiceNumber']?>"><br>
@@ -21,6 +23,8 @@ if (isset($_GET['id'])) {
     </form>
 <?php
 
+
 }else{
     echo "Wybierz fakturę do edycji";
 }
+template_footer();

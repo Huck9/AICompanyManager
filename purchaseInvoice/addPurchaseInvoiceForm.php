@@ -11,7 +11,7 @@ template_header("Add Invoice");
         Watrosc brutto<input type="number" step="0.01" name="bruttoValue"><br>
         Wartość netto w innej walucie<input type="number" step="0.01" name="nettoValueOther"><br>
         Skrót waluty<input type="text" name="nettoOtherName"><br>
-        <input type="file" name="file" size="50"><br>
+        <input type="file" name="file" size="50" required><br>
         <input type="submit">
     </form>
 <?php

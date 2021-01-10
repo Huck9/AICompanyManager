@@ -13,9 +13,12 @@ function uploadFile($file){
             echo "The file " . basename($file['name']) . " is uploaded";
         } else {
             echo "Problem uploading file";
+            return false;
         }
 
     } else {
         echo "You may only upload PDFs, JPEGs or GIF files.<br>";
+        return false;
     }
+    return true;
 }
