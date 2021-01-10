@@ -1,10 +1,17 @@
 <?php
+
 $config = [];
 $config['dsn'] = 'mysql:dbname=id15055529_company; host=127.0.0.1';
 $config['username'] = 'root';
 $config['password'] = '';
 
 function template_header($title) {
+    session_start();
+    if (isset($_SESSION) && isset($_SESSION['name'])) {
+        echo "Current user: {$_SESSION['name']}, session id: " . session_id();
+    } else {
+        echo "No session started.";
+    }
     echo <<<EOT
 <!DOCTYPE html>
 <html>
@@ -35,12 +42,12 @@ function template_header($title) {
         </li>
         <li class="header">Inne</li>
         <li>
-            <a href="#">
+            <a href="../Documents/readDocument.php">
                 <i class="fa fa-tachometer" aria-hidden="true"></i> Dokumenty
             </a>
         </li>
         <li>
-            <a href="#">
+            <a href="../Equipment/readEquipment.php">
                 <i class="fa fa-tachometer" aria-hidden="true"></i> Sprzęt
             </a>
         </li>
@@ -51,8 +58,8 @@ function template_header($title) {
         </li>
         <li class="header">Konto</li>
         <li>
-            <a href="../index.php">
-                <i class="fa fa-tachometer" aria-hidden="true"></i> Wyloguj
+            <a href="../logout.php" >
+                <i class="fa fa-tachometer" aria-hidden="true" ></i> Wyloguj
             </a>
         </li>
     </ul>

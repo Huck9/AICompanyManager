@@ -3,19 +3,26 @@ require_once("../config.php");
 global $config;
 $pdo = new PDO($config['dsn'], $config['username'], $config['password']);
 if (isset($_GET['id'])) {
-    $stmt = $pdo->prepare('SELECT * FROM Documents WHERE id = ?');
+    $stmt = $pdo->prepare('SELECT * FROM Documents WHERE IdDocument = ?');
     $stmt->execute([$_GET['id']]);
     $invoice = $stmt->fetch(PDO::FETCH_ASSOC);
-?>
-    <form method="post" action="updateDocument.php?id=<?=$_GET['id']?>">
-        Numer Dokumentu:<input type="text" name="IdDocument"><br>
-        Data<input type="date" name="documentDate"><br>
-        Notatki<input type="text" name="notes"><br>
-        <input type="file" name="file" size="50"><br>
-        <input type="submit">
-    </form>
-<?php
+    template_header("Edit Invoice");
+    ?>
+    <div class="container">
+        <div class="left"></div>
+        <form method="post" action="updateDocument.php?id=<?= $_GET['id'] ?>">
+            <div class="inputs">
+                Numer Dokumentu: <input type="text" name="IdDocument" class="standardInput"><br>
+                Data: <input type="date" name="documentDate" class="standardInput"><br>
+                Notatki: <input type="text" name="notes" class="standardInput"><br>
+                <input type="file" name="file" size="50"><br>
+                <input type="submit" class="submitInput">
+            </div>
+        </form>
+        <div class="right"></div>
+    </div>
+    <?php
 
-}else{
+} else {
     echo "Wybierz dokument do edycji";
 }

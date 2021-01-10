@@ -74,7 +74,7 @@ if (isset($_POST['sign'])) {
         session_start();
         $_SESSION['name'] = $login;
         $_SESSION['role'] = $role;
-        header("location: panel.html");
+        header("location: panel.php");
         echo "Udalo sie zalogowac";
     } else {
         ?>

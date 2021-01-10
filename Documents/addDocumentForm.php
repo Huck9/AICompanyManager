@@ -2,12 +2,18 @@
 require_once("../config.php");
 template_header("Add Document");
 ?>
-    <form method="post" action="addDocument.php" enctype="multipart/form-data">
-        Numer Dokumentu:<input type="text" name="IdDocument"><br>
-        Data<input type="date" name="documentDate"><br>
-        Notatki<input type="text" name="notes"><br>
-        <input type="file" name="file" size="50"><br>
-        <input type="submit">
-    </form>
+    <div class="container">
+        <div class="left"></div>
+        <form method="post" action="addDocument.php" enctype="multipart/form-data">
+            <div class="inputs">
+                Numer Dokumentu: <input type="text" name="IdDocument" class="standardInput"><br>
+                Data: <input type="date" name="documentDate" class="standardInput"><br>
+                Notatki: <input type="text" name="notes" class="standardInput"><br>
+                <input type="file" name="file" size="50"><br>
+                <input type="submit" class="submitInput">
+            </div>
+        </form>
+        <div class="right"></div>
+    </div>
 <?php
 template_footer();

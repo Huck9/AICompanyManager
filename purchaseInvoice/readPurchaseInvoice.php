@@ -23,7 +23,9 @@ template_header("Read Invoice");
             <td>Wartość netto w innej walucie</td>
             <td>Skrót waluty</td>
             <td>Nazwa pliku</td>
+<?php if ($_SESSION['role'] == "admin" || $_SESSION['role'] == "pracownik"  ) : ?>
             <td>Opcja</td>
+<?php endif; ?>
         </tr>
         </thead>
         <tbody>
@@ -38,10 +40,17 @@ template_header("Read Invoice");
                 <td><?= $invoice['bruttoValue'] ?></td>
                 <td><?= $invoice['nettoValueOther'] ?></td>
                 <td><?= $invoice['nettoOtherName'] ?></td>
-                <td><a href="../uploadFiles/uploads/<?= $invoice['filename'] ?>" class="dont-break-out"><?= $invoice['filename'] ?></td>
+                <td><a href="../uploadFiles/uploads/<?= $invoice['filename'] ?>"
+                       class="dont-break-out"><?= $invoice['filename'] ?></td>
                 <td class="actions">
-                    <a href="updatePurchaseInvoiceForm.php?id=<?= $invoice['id'] ?>" class="edit"><i class='fas fa-edit' style='font-size:24px'></i></a>
-                    <a href="deletePurchaseInvoice.php?id=<?= $invoice['id'] ?>" class="delete"><i class='fas fa-trash-alt' style='font-size:24px'></i></a>
+                    <?php if ($_SESSION['role'] == "admin" || $_SESSION['role'] == "pracownik"  ) : ?>
+                        <a href="updatePurchaseInvoiceForm.php?id=<?= $invoice['id'] ?>" class="edit"><i
+                                    class='fas fa-edit' style='font-size:24px'></i></a>
+                        <?php endif; ?>
+                     <?php if ($_SESSION['role'] == "admin") : ?>
+                        <a href="deletePurchaseInvoice.php?id=<?= $invoice['id'] ?>" class="delete"><i
+                                    class='fas fa-trash-alt' style='font-size:24px'></i></a>
+                    <?php endif; ?>
                 </td>
             </tr>
         <?php endforeach; ?>
