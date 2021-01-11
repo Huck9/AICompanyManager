@@ -1,5 +1,11 @@
 <?php
 require_once("../config.php");
+global $config;
+
+$pdo = new PDO($config['dsn'], $config['username'], $config['password']);
+$stmt = $pdo->query("SELECT id FROM purchaseinvoice");
+$idpurchaseinvoices = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
 template_header("Add Invoice");
 ?>
     <div class="container">
@@ -9,7 +15,13 @@ template_header("Add Invoice");
         Nazwa: <input type="text" name="Nazwa" class="standardInput"><br>
         Klucz seryjny: <input type="number" name="KluczSeryjny" class="standardInput"><br>
         Data zakupu: <input type="date" name="DataZakupu" class="standardInput"><br>
-        Id faktury: <input type="text" name="IdFaktury" class="standardInput"><br>
+        Id faktury:
+        <select name="IdFaktury" class="standardInput">
+        <?php foreach ($idpurchaseinvoices as $idpurchaseinvoice): ?>
+            <option value=<?= $idpurchaseinvoice['id'] ?>><?= $idpurchaseinvoice['id'] ?></option>
+        <?php endforeach; ?>
+        </select>
+        <br>
         Ważność wsparcia: <input type="date" name="WaznoscWsparcia" class="standardInput"><br>
         Ważność licencji: <input type="date" name="WaznoscLicencji" class="standardInput"><br>
         Czy jest bezterminowo: <input type="text" name="Bezterminowo" class="standardInput"><br>
