@@ -70,7 +70,7 @@ if (isset($_POST['sign'])) {
     $user = $stm->fetch();
 
     if ($user > 0) {
-        $role = $_POST['account'];
+        $role = $user['account'];
         session_start();
         $_SESSION['name'] = $login;
         $_SESSION['role'] = $role;
