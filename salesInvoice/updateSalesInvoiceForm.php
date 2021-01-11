@@ -10,7 +10,7 @@ if (isset($_GET['id'])) {
 ?>
     <div class="container">
         <div class="left"></div>
-    <form method="post" action="updateSalesInvoice.php?id=<?=$_GET['id']?>">
+    <form method="post" action="updateSalesInvoice.php?id=<?=$_GET['id']?> " enctype="multipart/form-data">
         <div class="inputs">
         Numer Faktury: <input type="text" name="invoiceNumber" value="<?=$invoice['invoiceNumber']?>" class="standardInput"><br>
         Nazwa konrahenta: <input type="text" name="contractorName" value="<?=$invoice['contractorName']?>" class="standardInput"><br>
