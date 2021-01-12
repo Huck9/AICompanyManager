@@ -9,21 +9,35 @@ $equipments = $stmt->fetchAll(PDO::FETCH_ASSOC);
 template_header("Read Equipment");
 ?>
     <button><a href="addEquipmentForm.php" class="add">Dodaj sprzęt</a></button>
-    <p></p>
+    <script src="../search.js"></script>
+        <p></p>
+        <input type="text" id="search" onkeyup="searchFunction()" placeholder="Podaj fraze do wyszukania">
+        <select id="search_select">
+            <option value="0">Numer inwentarzowy</option>
+            <option value="1">Nazwa</option>
+            <option value="2">Numer seryjny</option>
+            <option value="3">Data zakupu</option>
+            <option value="4">Id faktury</option>
+            <option value="5">Gwarancja</option>
+            <option value="6">Wartość netto</option>
+            <option value="7">User</option>
+            <option value="8">Notatki</option>
+            <option value="9">Id</option>
+        </select>
+        <p></p>
     <table>
         <thead>
         <tr class="category">
-            <td>Numer inwentarzowy</td>
-            <td>Nazwa</td>
-            <td>Numer seryjny</td>
-            <td>Data zakupu</td>
-            <td>Id faktury
-            </th>
-            <td>Gwarancja</td>
-            <td>Wartość netto</td>
-            <td>User</td>
-            <td>Notatki</td>
-            <td>Id</td>
+            <th>Numer inwentarzowy</th>
+            <th>Nazwa</th>
+            <th>Numer seryjny</th>
+            <th>Data zakupu</th>
+            <th>Id faktury</th>
+            <th>Gwarancja</th>
+            <th>Wartość netto</th>
+            <th>User</th>
+            <th>Notatki</th>
+            <th>Id</th>
             <?php if ($_SESSION['role'] == "admin" || $_SESSION['role'] == "pracownik"  ) : ?>
                 <td>Opcja</td>
             <?php endif; ?>
