@@ -19,7 +19,7 @@ template_header("Read Document");
             <option value="3">Nazwa pliku</option>
     </select>
     <p></p>
-    <table>
+    <table id="table">
         <thead>
         <tr class="category">
             <th>Id Dokumentu</th>

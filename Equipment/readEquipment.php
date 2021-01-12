@@ -25,7 +25,7 @@ template_header("Read Equipment");
             <option value="9">Id</option>
         </select>
         <p></p>
-    <table>
+    <table id="table">
         <thead>
         <tr class="category">
             <th>Numer inwentarzowy</th>
