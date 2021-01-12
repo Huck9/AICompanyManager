@@ -9,13 +9,23 @@ $documents = $stmt->fetchAll(PDO::FETCH_ASSOC);
 template_header("Read Document");
 ?>
     <button><a href="addDocumentForm.php" class="add">Dodaj dokument</a></button>
+    <script src="../search.js"></script>
+    <p></p>
+    <input type="text" id="search" onkeyup="searchFunction()" placeholder="Podaj fraze do wyszukania">
+    <select id="search_select">
+            <option value="0">Id Dokumentu</option>
+            <option value="1">Data Dokumentu</option>
+            <option value="2">Notatki</option>
+            <option value="3">Nazwa pliku</option>
+    </select>
+    <p></p>
     <table>
         <thead>
         <tr class="category">
-            <td>Id Dokumentu</td>
-            <td>Data Dokumentu</td>
-            <td>Notatki</td>
-            <td>Nazwa Pliku</td>
+            <th>Id Dokumentu</th>
+            <th>Data Dokumentu</th>
+            <th>Notatki</th>
+            <th>Nazwa Pliku</th>
             <?php if ($_SESSION['role'] == "admin" || $_SESSION['role'] == "pracownik"  ) : ?>
                 <td>Opcja</td>
             <?php endif; ?>
