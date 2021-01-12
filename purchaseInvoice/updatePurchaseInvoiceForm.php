@@ -18,6 +18,7 @@ if (isset($_GET['id'])) {
         Wartość netto: <input type="number" step="0.01"  name="nettoValue"  value="<?=$invoice['nettoValue']?>" class="standardInput"><br>
         Wartość VAT: <input type="number" step="0.01"  name="vatValue"  value="<?=$invoice['vatValue']?>" class="standardInput"><br>
         Watrosc brutto: <input type="number" step="0.01"  name="bruttoValue"  value="<?=$invoice['bruttoValue']?>" class="standardInput"><br>
+        Data faktury: <input type="date" name="date" value="<?= $invoice['date'] ?>" class="standardInput"><br>
         Wartość netto w innej walucie: <input type="number" step="0.01"  name="nettoValueOther"  value="<?=$invoice['nettoValueOther']?>" class="standardInput"><br>
         Skrót waluty: <input type="text" name="nettoOtherName"  value="<?=$invoice['nettoOtherName']?>" class="standardInput"><br>
         <input type="file" name="file" size="50" /><br>

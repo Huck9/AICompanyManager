@@ -8,7 +8,7 @@ $config['password'] = '';
 function template_header($title) {
     session_start();
     if (isset($_SESSION) && isset($_SESSION['name'])) {
-        echo "Current user: {$_SESSION['name']}, session id: " . session_id();
+        echo "Current user: {$_SESSION['name']}";
     } else {
         echo "No session started.";
     }

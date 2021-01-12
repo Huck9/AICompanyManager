@@ -263,3 +263,6 @@ a.delete {
 .add {
     color: black;
 }
+.details{
+    text-align: left;
+}
