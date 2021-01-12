@@ -5,7 +5,7 @@ $pdo = new PDO($config['dsn'], $config['username'], $config['password']);
 if (isset($_GET['id'])) {
     $stmt = $pdo->prepare('SELECT * FROM Documents WHERE IdDocument = ?');
     $stmt->execute([$_GET['id']]);
-    $invoice = $stmt->fetch(PDO::FETCH_ASSOC);
+    $document = $stmt->fetch(PDO::FETCH_ASSOC);
     template_header("Edit Invoice");
     ?>
     <div class="container">

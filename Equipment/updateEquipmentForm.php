@@ -15,7 +15,7 @@ if (isset($_GET['id'])) {
         Numer inwentarzowy: <input type="text" name="inventoryNumber" value="<?=$equipment['inventoryNumber']?>" class="standardInput"><br>
         Nazwa: <input type="text" name="name" value="<?=$equipment['name']?>" class="standardInput"><br>
         Numer seryjny: <input type="text" name="serialNumber" value="<?=$equipment['serialNumber']?>" class="standardInput"><br>
-        Data zakupu: <input type="date" name="purchaseDate" value="<?=$equipment['date']?>" class="standardInput"><br>
+            Data zakupu: <input type="date" name="purchaseDate" value="<?=$equipment['purchaseDate'] ?>" class="standardInput"><br>
         Id faktury: <input type="text" name="invoiceNumber" value="<?=$equipment['invoiceNumber']?>" class="standardInput"><br>
         Gwarancja: <input type="date" name="warrantyExpiryDate" value="<?=$equipment['warrantyExpiryDate']?>" class="standardInput"><br>
         Wartość netto: <input type="number" step="0.01" name="netValue" value="<?=$equipment['netValue']?>" class="standardInput"><br>
