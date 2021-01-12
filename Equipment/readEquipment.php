@@ -39,7 +39,7 @@ template_header("Read Equipment");
             <th>Notatki</th>
             <th>Id</th>
             <?php if ($_SESSION['role'] == "admin" || $_SESSION['role'] == "pracownik"  ) : ?>
-                <td>Opcja</td>
+                <th>Opcja</th>
             <?php endif; ?>
         </tr>
         </thead>

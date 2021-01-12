@@ -27,7 +27,7 @@ template_header("Read Document");
             <th>Notatki</th>
             <th>Nazwa Pliku</th>
             <?php if ($_SESSION['role'] == "admin" || $_SESSION['role'] == "pracownik"  ) : ?>
-                <td>Opcja</td>
+                <th>Opcja</th>
             <?php endif; ?>
         </tr>
         </thead>
