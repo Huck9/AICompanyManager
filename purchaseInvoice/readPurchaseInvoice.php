@@ -4,10 +4,6 @@ global $config;
 
 $pdo = new PDO($config['dsn'], $config['username'], $config['password']);
 
-
-
-
-
 $brutto = 0;
 $netto = 0;
 $stmt = $pdo->query("SELECT * FROM purchaseinvoice ");
@@ -37,26 +33,25 @@ $isSearch = false;
 
 if (isset($_GET['search']) && isset($_GET['option'])) {
     $isSearch = true;
-    $search =$_GET['search'];
+    $search = $_GET['search'];
     $option = $_GET['option'];
 
     if ($option == 'id') {
         $stmt = $pdo->prepare("SELECT * FROM purchaseinvoice WHERE id=? ");
-    }elseif ($option == 'invoiceNumber'){
+    } elseif ($option == 'invoiceNumber') {
         $stmt = $pdo->prepare("SELECT * FROM purchaseinvoice WHERE invoiceNumber=? ");
-    }elseif ($option == 'contractorName'){
+    } elseif ($option == 'contractorName') {
         $stmt = $pdo->prepare("SELECT * FROM purchaseinvoice WHERE contractorName=? ");
-    }elseif ($option == 'vatID'){
+    } elseif ($option == 'vatID') {
         $stmt = $pdo->prepare("SELECT * FROM purchaseinvoice WHERE vatID=? ");
     }
 
     $stmt->execute([$search]);
     $invoices = $stmt->fetchAll(PDO::FETCH_ASSOC);
-}else{
+} else {
     $stmt = $pdo->query("SELECT * FROM purchaseinvoice LIMIT $offset, $limit ");
     $invoices = $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
-
 
 
 template_header("Read Invoice");
@@ -64,8 +59,8 @@ template_header("Read Invoice");
     <button><a href="addPurchaseInvoiceForm.php" class="add">Dodaj fakturę</a></button>
     <p></p>
     <form action="#">
-        <input type="text" id="search" name="search"  placeholder="Podaj fraze do wyszukania">
-        <select name="option"  id="search_select">
+        <input type="text" id="search" name="search" placeholder="Podaj fraze do wyszukania">
+        <select name="option" id="search_select">
             <option value="id">ID</option>
             <option value="invoiceNumber">Numer faktury</option>
             <option value="contractorName">Nazwa kontrahenta</option>
@@ -116,25 +111,26 @@ template_header("Read Invoice");
     </table>
 
 
-
 <?php
-if (!$isSearch){
+if (!$isSearch) {
     echo "Strona:";
-for ($i = 1; $i <= $page; $i++) {
+    for ($i = 1; $i <= $page; $i++) {
 
+        ?>
+
+        <a href="readPurchaseInvoice.php?page=<?= $i - 1 ?>"><?= $i ?></a>
+        <?php
+
+    }
     ?>
-
-    <a href="readPurchaseInvoice.php?page=<?= $i - 1 ?>"><?= $i ?></a>
-    <?php
-
-}
-?>
+        <br>
+        <button><a href="invoiceStats.php">Podsumowanie</a></button>
     <p>Wartość netto: <?= $netto ?></p>
     <p>Wartość brutto: <?= $brutto ?></p>
-<?php
-}else{
+    <?php
+} else {
     ?>
     <a href="readPurchaseInvoice.php">Powrót do katalogu</a>
-<?php
+    <?php
 }
 template_footer();
