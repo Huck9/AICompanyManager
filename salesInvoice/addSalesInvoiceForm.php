@@ -15,6 +15,7 @@ template_header("Add Invoice");
                 Wartość netto w innej walucie: <input type="number" step="0.01" name="nettoValueOther"
                                                       class="standardInput"><br>
                 Skrót waluty: <input type="text" name="nettoOtherName" class="standardInput"><br>
+                Data faktury: <input type="date" name="date" class="standardInput"><br>
                 <input type="file" name="file" size="50"><br>
                 <input type="submit" class="submitInput">
             </div>

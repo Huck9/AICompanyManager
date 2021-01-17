@@ -23,11 +23,12 @@ if (isset($_POST['limit'])) {
 
 $currentPage = 0;
 $page = ceil($cnt / $limit);
-$offset = $limit * $currentPage;
 
 if (isset($_GET["page"])) {
     $currentPage = $_GET["page"];
 }
+
+$offset = $limit * $currentPage;
 
 $isSearch = false;
 
@@ -49,6 +50,7 @@ if (isset($_GET['search']) && isset($_GET['option'])) {
     $stmt->execute([$search]);
     $invoices = $stmt->fetchAll(PDO::FETCH_ASSOC);
 } else {
+    echo $offset;
     $stmt = $pdo->query("SELECT * FROM purchaseinvoice LIMIT $offset, $limit ");
     $invoices = $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
@@ -123,8 +125,9 @@ if (!$isSearch) {
 
     }
     ?>
-        <br>
-        <button><a href="invoiceStats.php">Podsumowanie</a></button>
+    <br>
+    <button><a href="invoiceStats.php">Podsumowanie</a></button>
+    <p>Statystyki ogółem:</p>
     <p>Wartość netto: <?= $netto ?></p>
     <p>Wartość brutto: <?= $brutto ?></p>
     <?php
