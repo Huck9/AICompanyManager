@@ -23,11 +23,12 @@ if (isset($_POST['limit'])) {
 
 $currentPage = 0;
 $page = ceil($cnt / $limit);
-$offset = $limit * $currentPage;
 
 if (isset($_GET["page"])) {
     $currentPage = $_GET["page"];
 }
+
+$offset = $limit * $currentPage;
 
 $isSearch = false;
 
@@ -49,6 +50,7 @@ if (isset($_GET['search']) && isset($_GET['option'])) {
     $stmt->execute([$search]);
     $invoices = $stmt->fetchAll(PDO::FETCH_ASSOC);
 } else {
+    echo $offset;
     $stmt = $pdo->query("SELECT * FROM purchaseinvoice LIMIT $offset, $limit ");
     $invoices = $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
@@ -123,8 +125,21 @@ if (!$isSearch) {
 
     }
     ?>
-        <br>
-        <button><a href="invoiceStats.php">Podsumowanie</a></button>
+    <br>
+
+    <form method="post" action="readPurchaseInvoiceFiltered.php">
+        Po czym chcesz sortować?
+        <input type="radio" name="type" value="month" checked><label for="month">Miesiące</label>
+        <input type="radio" name="type" value="year"><label for="month">Lata</label><br>
+
+        Filtruj po miesiącach:<input type="month" name="month"/><br>
+        Filtruj po latach:<input type="number" min="1900" max="2099" step="1" value="2020"  name="year"/><br>
+
+        <input type="submit" value="Sortuj">
+    </form>
+
+    <button><a href="invoiceStats.php">Podsumowanie</a></button>
+    <p>Statystyki ogółem:</p>
     <p>Wartość netto: <?= $netto ?></p>
     <p>Wartość brutto: <?= $brutto ?></p>
     <?php
