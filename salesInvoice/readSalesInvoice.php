@@ -15,12 +15,7 @@ foreach ($invoices as $invoice):
     $brutto += $invoice['bruttoValue'];
 endforeach;
 
-if (isset($_POST['limit'])) {
-    $limit = $_POST['limit'];
-} else {
-    $limit = 25;
-}
-
+$limit = 25;
 $currentPage = 0;
 $page = ceil($cnt / $limit);
 
@@ -124,6 +119,16 @@ if (!$isSearch) {
     }
     ?>
     <br>
+    <form method="post" action="readSalesInvoiceFiltered.php">
+        Po czym chcesz sortować?
+        <input type="radio" name="type" value="month" checked><label for="month">Miesiące</label>
+        <input type="radio" name="type" value="year"><label for="month">Lata</label><br>
+
+        Filtruj po miesiącach:<input type="month" name="month"/><br>
+        Filtruj po latach:<input type="number" min="1900" max="2099" step="1" value="2020"  name="year"/><br>
+
+        <input type="submit" value="Sortuj">
+    </form>
     <button><a href="../purchaseInvoice/invoiceStats.php">Podsumowanie</a></button>
     <p>Statystyki ogółem:</p>
     <p>Wartość netto: <?= $netto ?></p>
