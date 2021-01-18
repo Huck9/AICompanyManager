@@ -4,7 +4,7 @@
     global $config;
     $pdo = new PDO($config['dsn'], $config['username'], $config['password']);
     if (isset($_GET['id'])) {
-        $stmt = $pdo->prepare('SELECT * FROM purchaseinvoice WHERE id = ?');
+        $stmt = $pdo->prepare('SELECT * FROM salesinvoice WHERE id = ?');
         $stmt->execute([$_GET['id']]);
         $invoice = $stmt->fetch(PDO::FETCH_ASSOC);
         template_header("Edit Invoice");
