@@ -50,7 +50,6 @@ if (isset($_GET['search']) && isset($_GET['option'])) {
     $stmt->execute([$search]);
     $invoices = $stmt->fetchAll(PDO::FETCH_ASSOC);
 } else {
-    echo $offset;
     $stmt = $pdo->query("SELECT * FROM purchaseinvoice LIMIT $offset, $limit ");
     $invoices = $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
