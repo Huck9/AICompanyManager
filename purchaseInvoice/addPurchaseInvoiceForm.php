@@ -1,6 +1,11 @@
 <?php
+
 require_once("../config.php");
 template_header("Add Invoice");
+
+if (isset($_SESSION) && isset($_SESSION['name'])) {
+    //echo "Current user: {$_SESSION['name']}";
+
 ?>
     <div class="container">
         <div class="left"></div>
@@ -24,3 +29,6 @@ template_header("Add Invoice");
 </div>
 <?php
 template_footer();
+} else {
+    echo "No session started.";
+}

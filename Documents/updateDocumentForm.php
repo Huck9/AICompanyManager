@@ -1,4 +1,5 @@
 <?php
+
 require_once("../config.php");
 global $config;
 $pdo = new PDO($config['dsn'], $config['username'], $config['password']);
@@ -7,6 +8,9 @@ if (isset($_GET['id'])) {
     $stmt->execute([$_GET['id']]);
     $document = $stmt->fetch(PDO::FETCH_ASSOC);
     template_header("Edit Invoice");
+
+    if (isset($_SESSION) && isset($_SESSION['name'])) {
+        //echo "Current user: {$_SESSION['name']}";
     ?>
     <div class="container">
         <div class="left"></div>
@@ -22,7 +26,10 @@ if (isset($_GET['id'])) {
         <div class="right"></div>
     </div>
     <?php
-
+    } else {
+        echo "No session started.";
+    }
 } else {
     echo "Wybierz dokument do edycji";
 }
+

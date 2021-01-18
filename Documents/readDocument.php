@@ -1,4 +1,5 @@
 <?php
+
 require_once("../config.php");
 global $config;
 
@@ -7,8 +8,11 @@ $stmt = $pdo->query("SELECT * FROM Documents");
 $documents = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 template_header("Read Document");
+
+if (isset($_SESSION) && isset($_SESSION['name'])) {
+    //echo "Current user: {$_SESSION['name']}";
 ?>
-    <button><a href="addDocumentForm.php" class="add">Dodaj dokument</a></button>
+    <button><a href="addDocumentForm.php" class="but">Dodaj dokument</a></button>
     <script src="../search.js"></script>
     <p></p>
     <input type="text" id="search" onkeyup="searchFunction()" placeholder="Podaj fraze do wyszukania">
@@ -58,3 +62,6 @@ template_header("Read Document");
 <?php
 
 template_footer();
+} else {
+    echo "No session started.";
+}

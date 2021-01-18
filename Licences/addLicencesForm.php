@@ -1,4 +1,5 @@
 <?php
+
 require_once("../config.php");
 global $config;
 
@@ -7,6 +8,9 @@ $stmt = $pdo->query("SELECT id FROM purchaseinvoice");
 $idpurchaseinvoices = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 template_header("Add Invoice");
+
+if (isset($_SESSION) && isset($_SESSION['name'])) {
+    //echo "Current user: {$_SESSION['name']}";
 ?>
     <div class="container">
         <div class="left"></div>
@@ -34,3 +38,6 @@ template_header("Add Invoice");
     </div>
 
 <?php
+} else {
+    echo "No session started.";
+}

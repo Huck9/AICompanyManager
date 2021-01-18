@@ -1,4 +1,5 @@
 <?php
+
 require_once("../config.php");
 global $config;
 $pdo = new PDO($config['dsn'], $config['username'], $config['password']);
@@ -11,6 +12,9 @@ if (isset($_GET['NrInwentarzowy'])) {
     $idpurchaseinvoices = $stmt2->fetchAll(PDO::FETCH_ASSOC);
 
     template_header("Edit Invoice");
+
+    if (isset($_SESSION) && isset($_SESSION['name'])) {
+        //echo "Current user: {$_SESSION['name']}";
     ?>
     <div class="container">
     <div class="left"></div>
@@ -41,7 +45,9 @@ if (isset($_GET['NrInwentarzowy'])) {
         <div class="right"></div>
     </div>
     <?php
-
+    } else {
+        echo "No session started.";
+    }
 }else{
     echo "Wybierz licencje do edycji";
 }

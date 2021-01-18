@@ -1,4 +1,5 @@
 <?php
+
 require_once("../config.php");
 global $config;
 
@@ -57,8 +58,12 @@ if (isset($_GET['search']) && isset($_GET['option'])) {
 
 
 template_header("Read Invoice");
+
+if (isset($_SESSION) && isset($_SESSION['name'])) {
+    //echo "Current user: {$_SESSION['name']}";
+
 ?>
-    <button><a href="addPurchaseInvoiceForm.php" class="add">Dodaj fakturę</a></button>
+    <button><a href="addPurchaseInvoiceForm.php" class="but">Dodaj fakturę</a></button>
     <p></p>
     <form action="#">
         <input type="text" id="search" name="search" placeholder="Podaj fraze do wyszukania">
@@ -68,7 +73,7 @@ template_header("Read Invoice");
             <option value="contractorName">Nazwa kontrahenta</option>
             <option value="vatID">VAT ID</option>
         </select>
-        <button>Submit</button>
+        <button>Szukaj</button>
     </form>
     <p></p>
     <table id="table">
@@ -135,10 +140,12 @@ if (!$isSearch) {
         Filtruj po miesiącach:<input type="month" name="month"/><br>
         Filtruj po latach:<input type="number" min="1900" max="2099" step="1" value="2020"  name="year"/><br>
 
-        <input type="submit" value="Sortuj">
+        <p></p>
+        <input type="submit" value="Sortuj" class="submitInput">
     </form>
 
-    <button><a href="invoiceStats.php">Podsumowanie</a></button>
+    <p></p>
+    <button><a href="invoiceStats.php" class="but">Podsumowanie</a></button>
     <p>Statystyki ogółem:</p>
     <p>Wartość netto: <?= $netto ?></p>
     <p>Wartość brutto: <?= $brutto ?></p>
@@ -149,3 +156,6 @@ if (!$isSearch) {
     <?php
 }
 template_footer();
+} else {
+    echo "No session started.";
+}

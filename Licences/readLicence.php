@@ -1,4 +1,5 @@
 <?php
+
 require_once("../config.php");
 global $config;
 
@@ -7,8 +8,11 @@ $stmt = $pdo->query("SELECT * FROM licences");
 $licences = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 template_header("Read Invoice");
+
+if (isset($_SESSION) && isset($_SESSION['name'])) {
+    //echo "Current user: {$_SESSION['name']}";
 ?>
-    <button><a href="addLicencesForm.php" class="add">Dodaj licencję</a></button>
+    <button><a href="addLicencesForm.php" class="but">Dodaj licencję</a></button>
     <script src="../search.js"></script>
     <p></p>
     <input type="text" id="search" onkeyup="searchFunction()" placeholder="Podaj fraze do wyszukania">
@@ -73,3 +77,6 @@ template_header("Read Invoice");
 
 
 <?php
+} else {
+    echo "No session started.";
+}

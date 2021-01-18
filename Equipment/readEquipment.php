@@ -1,4 +1,5 @@
 <?php
+
 require_once("../config.php");
 global $config;
 
@@ -7,8 +8,11 @@ $stmt = $pdo->query("SELECT * FROM Equipments");
 $equipments = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 template_header("Read Equipment");
+
+if (isset($_SESSION) && isset($_SESSION['name'])) {
+    //echo "Current user: {$_SESSION['name']}";
 ?>
-    <button><a href="addEquipmentForm.php" class="add">Dodaj sprzęt</a></button>
+    <button><a href="addEquipmentForm.php" class="but">Dodaj sprzęt</a></button>
     <script src="../search.js"></script>
         <p></p>
         <input type="text" id="search" onkeyup="searchFunction()" placeholder="Podaj fraze do wyszukania">
@@ -75,3 +79,6 @@ template_header("Read Equipment");
 <?php
 
 template_footer();
+} else {
+    echo "No session started.";
+}

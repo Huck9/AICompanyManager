@@ -1,7 +1,14 @@
 <?php
-require_once("../config.php");
-template_header("Add Invoice");
-?>
+
+
+
+    require_once("../config.php");
+    template_header("Add Invoice");
+
+if (isset($_SESSION) && isset($_SESSION['name'])) {
+    //echo "Current user: {$_SESSION['name']}";
+
+    ?>
     <div class="container">
         <div class="left"></div>
         <form method="post" action="addSalesInvoice.php" enctype="multipart/form-data">
@@ -22,5 +29,8 @@ template_header("Add Invoice");
         </form>
         <div class="right"></div>
     </div>
-<?php
-template_footer();
+    <?php
+    template_footer();
+} else {
+    echo "No session started.";
+}

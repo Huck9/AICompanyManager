@@ -4,13 +4,9 @@ global $config;
 
 session_start();
 if (isset($_SESSION) && isset($_SESSION['name'])) {
-    echo "Current user: {$_SESSION['name']}, session id: " . session_id();
-} else {
-    echo "No session started.";
-}
-?>
-
-<!DOCTYPE html>
+    //echo "Current user: {$_SESSION['name']}, session id: " . session_id();
+    ?>
+    <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -21,19 +17,19 @@ if (isset($_SESSION) && isset($_SESSION['name'])) {
 
 <div class="sidebar-container">
     <div class="sidebar-logo">
-M&M – Company Manager
-</div>
+    M&M – Company Manager
+    </div>
     <ul class="sidebar-navigation">
         <li class="header">Faktury</li>
         <li>
             <a href="purchaseInvoice/readPurchaseInvoice.php">
                 <i class="fa fa-tachometer" aria-hidden="true"></i> Faktury zakupu
-</a>
+    </a>
         </li>
         <li>
             <a href="salesInvoice/readSalesInvoice.php">
                 <i class="fa fa-tachometer" aria-hidden="true"></i> Faktury sprzedaży
-</a>
+    </a>
         </li>
         <li class="header">Inne</li>
         <li>
@@ -66,3 +62,9 @@ M&M – Company Manager
 
 </body>
 </html>
+<?php
+} else {
+    echo "No session started.";
+}
+?>
+

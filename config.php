@@ -8,12 +8,9 @@ $config['password'] = '';
 function template_header($title) {
     session_start();
     if (isset($_SESSION) && isset($_SESSION['name'])) {
-        echo "Current user: {$_SESSION['name']}";
-    } else {
-        echo "No session started.";
-    }
-    echo <<<EOT
-<!DOCTYPE html>
+        //echo "Current user: {$_SESSION['name']}";
+        ?>
+        <!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="utf-8">
@@ -27,18 +24,18 @@ function template_header($title) {
 	<div class="sidebar-container">
     <div class="sidebar-logo">
         M&M – Company Manager
-    </div>
+        </div>
     <ul class="sidebar-navigation">
         <li class="header">Faktury</li>
         <li>
             <a href="../purchaseInvoice/readPurchaseInvoice.php">
                 <i class="fa fa-tachometer" aria-hidden="true"></i> Faktury zakupu
-            </a>
+        </a>
         </li>
         <li>
             <a href="../salesInvoice/readSalesInvoice.php">
                 <i class="fa fa-tachometer" aria-hidden="true"></i> Faktury sprzedaży
-            </a>
+        </a>
         </li>
         <li class="header">Inne</li>
         <li>
@@ -65,9 +62,11 @@ function template_header($title) {
     </ul>
 </div>
 <div class="content-container">
+    <?php
+    }
+    echo <<<EOT
 EOT;
 }
-
 
 function template_footer() {
     echo <<<EOT

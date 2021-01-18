@@ -1,4 +1,5 @@
 <?php
+
 require_once("../config.php");
 global $config;
 
@@ -12,6 +13,9 @@ $salesInvoice = $stmt->fetchAll(PDO::FETCH_ASSOC);
 $stmt = $pdo->query("SELECT sum(salesinvoice.nettoValue) - sum(purchaseInvoice.nettoValue) as nettoValue, sum(salesinvoice.vatValue) - sum(purchaseInvoice.vatValue) as vatValue, sum(salesinvoice.bruttoValue) - sum(purchaseInvoice.bruttoValue) as bruttoValue , DATE_FORMAT(purchaseInvoice.date, '%m %Y') as date FROM purchaseinvoice JOIN salesinvoice ON DATE_FORMAT(purchaseInvoice.date, '%m %Y') = DATE_FORMAT(salesinvoice.date, '%m %Y') WHERE purchaseinvoice.date IS NOT NULL AND salesinvoice.date IS NOT NULL GROUP BY DATE_FORMAT(purchaseinvoice.date, '%m %Y')");
 $diff = $stmt->fetchAll(PDO::FETCH_ASSOC);
 template_header("Read Invoice");
+
+if (isset($_SESSION) && isset($_SESSION['name'])) {
+    //echo "Current user: {$_SESSION['name']}";
 ?>
 <h1>Podsumowanie miesięczne</h1>
     <h2>Faktury zakupu</h2>
@@ -45,3 +49,6 @@ foreach ($diff as $sales){
     echo "<br>";
 }
 template_footer();
+} else {
+    echo "No session started.";
+}

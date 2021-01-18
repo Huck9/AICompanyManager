@@ -1,4 +1,5 @@
 <?php
+
 require_once("../config.php");
 global $config;
 
@@ -25,6 +26,9 @@ if ($_POST['type'] == 'month') {
 $invoices = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 template_header("Read Invoice");
+
+if (isset($_SESSION) && isset($_SESSION['name'])) {
+    //echo "Current user: {$_SESSION['name']}";
 ?>
 
     <table id="table">
@@ -71,3 +75,6 @@ template_header("Read Invoice");
   <button><a href="readPurchaseInvoice.php">Powrót do faktur</a></button>
 <?php
 template_footer();
+} else {
+    echo "No session started.";
+}
